@@ -40,6 +40,7 @@ export default class TextField extends PureComponent {
     tintColor: "rgb(0, 145, 234)",
     textColor: "rgba(0, 0, 0, .87)",
     baseColor: "rgba(0, 0, 0, .38)",
+    lineColor: "rgb(0, 145, 234)",
 
     errorColor: "rgb(213, 0, 0)",
 
@@ -70,6 +71,7 @@ export default class TextField extends PureComponent {
     tintColor: PropTypes.string,
     textColor: PropTypes.string,
     baseColor: PropTypes.string,
+    lineColor: PropTypes.string,
 
     label: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -81,7 +83,6 @@ export default class TextField extends PureComponent {
 
     lineWidth: PropTypes.number,
     activeLineWidth: PropTypes.number,
-    lineColor: PropTypes.string,
 
     disabled: PropTypes.bool,
     disabledLineType: Line.propTypes.type,
