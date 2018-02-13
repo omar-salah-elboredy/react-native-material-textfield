@@ -72,6 +72,8 @@ export default class TextField extends PureComponent {
     textColor: PropTypes.string,
     baseColor: PropTypes.string,
     lineColor: PropTypes.string,
+    cursorColor: PropTypes.string,
+    labelColor: PropTypes.string,
 
     label: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -355,6 +357,8 @@ export default class TextField extends PureComponent {
       baseColor,
       lineColor,
       textColor,
+      cursorColor,
+      labelColor,
       errorColor,
       lineWidth,
       activeLineWidth,
@@ -498,6 +502,7 @@ export default class TextField extends PureComponent {
       fontSize,
       activeFontSize: labelFontSize,
       tintColor,
+      labelColor,
       baseColor,
       errorColor,
       animationDuration,
@@ -529,7 +534,11 @@ export default class TextField extends PureComponent {
 
             <TextInput
               style={[styles.input, inputStyle, inputStyleOverrides]}
-              selectionColor={tintColor}
+              selectionColor={
+                this.props.cursorColor
+                  ? this.props.cursorColor
+                  : this.props.tintColor
+              }
               {...props}
               editable={!disabled && editable}
               onChange={this.onChange}
