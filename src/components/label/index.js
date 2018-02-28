@@ -25,6 +25,7 @@ export default class Label extends PureComponent {
 
     tintColor: PropTypes.string.isRequired,
     baseColor: PropTypes.string.isRequired,
+    unfocusedLabelColor: PropTypes.string,
     errorColor: PropTypes.string.isRequired,
 
     animationDuration: PropTypes.number.isRequired,
@@ -124,6 +125,7 @@ export default class Label extends PureComponent {
       baseColor,
       tintColor,
       labelColor,
+      unfocusedLabelColor,
       baseSize,
       basePadding,
       style,
@@ -140,7 +142,7 @@ export default class Label extends PureComponent {
           inputRange: [-1, 0, 1],
           outputRange: [
             errorColor,
-            baseColor,
+            unfocusedLabelColor ? unfocusedLabelColor : baseColor,
             labelColor ? labelColor : tintColor
           ]
         });
