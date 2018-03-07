@@ -396,12 +396,7 @@ export default class TextField extends PureComponent {
           outputRange: [errorColor, lineColor, lineColor]
         });
 
-    let borderBottomWidth = restricted
-      ? activeLineWidth
-      : focus.interpolate({
-          inputRange: [-1, 0, 1],
-          outputRange: [activeLineWidth, lineWidth, activeLineWidth]
-        });
+    let borderBottomWidth = activeLineWidth;
 
     let inputContainerStyle = {
       paddingTop: labelHeight,
@@ -436,7 +431,7 @@ export default class TextField extends PureComponent {
               android: { textAlignVertical: "top" }
             })
           }
-        : { height: fontSize * 1.5 })
+        : { height: fontSize * 1.25 })
     };
 
     let errorStyle = {
@@ -530,7 +525,9 @@ export default class TextField extends PureComponent {
         <Animated.View {...inputContainerProps}>
           {disabled && <Line {...lineProps} />}
 
-          <Label {...labelProps}>{label}</Label>
+          <Label text={this.state.text} {...labelProps}>
+            {label}
+          </Label>
 
           <View style={styles.row}>
             {this.renderAffix("prefix", active, focused)}

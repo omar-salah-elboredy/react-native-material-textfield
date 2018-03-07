@@ -88,7 +88,7 @@ export default class Label extends PureComponent {
   ) {
     return active || focused
       ? baseSize - basePadding - activeFontSize * 1.2
-      : baseSize + fontSize * 0.25;
+      : baseSize + fontSize * 0.09;
   }
 
   inputScaleState({ focused, active, fontSize, activeFontSize } = this.props) {
@@ -103,8 +103,8 @@ export default class Label extends PureComponent {
     return this.containerWidth * (1 - activeFontSize / fontSize) / 2;
   }
 
-  focusState({ focused, errored } = this.props) {
-    return errored ? -1 : focused ? 1 : 0;
+  focusState({ focused, errored, text } = this.props) {
+    return errored ? -1 : focused ? 1 : text ? 1 : 0;
   }
 
   onContainerLayout(event) {
@@ -142,7 +142,7 @@ export default class Label extends PureComponent {
           inputRange: [-1, 0, 1],
           outputRange: [
             errorColor,
-            unfocusedLabelColor ? unfocusedLabelColor : baseColor,
+            baseColor,
             labelColor ? labelColor : tintColor
           ]
         });
